@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core'
 import { Game, GamesService } from '../../services/games.service'
 import { EMPTY, Observable, catchError } from 'rxjs'
 import { AsyncPipe, CommonModule } from '@angular/common'
+import { GameCardComponent } from '../game-card/game-card.component'
 
 @Component({
     selector: 'game-grid',
     standalone: true,
-    imports: [AsyncPipe, CommonModule],
+    imports: [AsyncPipe, CommonModule, GameCardComponent],
     providers: [GamesService],
     templateUrl: './game-grid.component.html',
 })

@@ -1,19 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
-import {
-    Observable,
-    catchError,
-    count,
-    delay,
-    delayWhen,
-    map,
-    retry,
-    throwError,
-} from 'rxjs'
+import { Observable, catchError, map, retry, throwError } from 'rxjs'
 
 export interface Game {
     id: string
     name: string
+    background_image: string
 }
 
 interface FetchGamesResponse {
