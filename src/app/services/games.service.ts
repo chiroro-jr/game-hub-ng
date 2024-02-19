@@ -2,10 +2,17 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
 import { Observable, catchError, map, retry, throwError } from 'rxjs'
 
+export interface Platform {
+    id: number
+    name: string
+    slug: string
+}
+
 export interface Game {
-    id: string
+    id: number
     name: string
     background_image: string
+    parent_platforms: { platform: Platform }[]
 }
 
 interface FetchGamesResponse {

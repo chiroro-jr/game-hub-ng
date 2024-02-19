@@ -29,6 +29,18 @@ dependencies:
   '@angular/router':
     specifier: ^17.2.0
     version: 17.2.1(@angular/common@17.2.1)(@angular/core@17.2.1)(@angular/platform-browser@17.2.1)(rxjs@7.8.1)
+  '@ng-icons/bootstrap-icons':
+    specifier: ^27.0.0
+    version: 27.0.0
+  '@ng-icons/core':
+    specifier: ^27.0.0
+    version: 27.0.0
+  '@ng-icons/font-awesome':
+    specifier: ^27.0.0
+    version: 27.0.0
+  '@ng-icons/material-icons':
+    specifier: ^27.0.0
+    version: 27.0.0
   flowbite:
     specifier: ^2.3.0
     version: 2.3.0
@@ -2133,6 +2145,30 @@ packages:
     dependencies:
       call-bind: 1.0.7
     dev: true
+
+  /@ng-icons/bootstrap-icons@27.0.0:
+    resolution: {integrity: sha512-4N7iqQaP3vpHZVcXGbQDibAmzbqXoa31sLnhkxHLt1kJUD3XWtd7MUfEJTSfQ60UeP5ItAWL4ZUvqEfKk5YYLw==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
+  /@ng-icons/core@27.0.0:
+    resolution: {integrity: sha512-Lw01+VmgQF6NZ1VAFDJ/b5dtq90HxfWfjohygHdvNnAQcbZpj/rXeOKsdN3IWYHJdxUWCZWFOTKgbDmCZ/8YkA==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
+  /@ng-icons/font-awesome@27.0.0:
+    resolution: {integrity: sha512-hEN9aLByw+rRdmxCO/BZj2bf5p15BUagOjBzVpcb9dDNAtXEwKxnbnn6xZDE474Po0uyeQgXLsKbq1/3c88kSg==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
+  /@ng-icons/material-icons@27.0.0:
+    resolution: {integrity: sha512-JeOjwVPCoytyZT3u4XrrGo4Ngj1uEp9neAAIEgT2UoX0uChuLj2MdvnXqjP9tHlAemWzPYq3GiEj1BozFLfyHg==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /@ngtools/webpack@17.2.0(@angular/compiler-cli@17.2.1)(typescript@5.3.3)(webpack@5.90.1):
     resolution: {integrity: sha512-3VilWAMylVpOqffhnLdc/UeElUWhBbG5j2XzxYWfQXb8OcVYoKNYPmJLc1vemoaYkkbaUX3zc5AEAN93Hk/q/g==}

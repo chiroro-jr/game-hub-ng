@@ -1,0 +1,8 @@
+<ul class="flex items-center gap-2 my-[10px]">
+    <li
+        *ngFor="let platform of platforms | plaform; trackBy: trackByPlaform"
+        class="text-gray-400"
+    >
+        <ng-icon size="20px" name="{{ iconMap[platform.slug] }}" />
+    </li>
+</ul>
