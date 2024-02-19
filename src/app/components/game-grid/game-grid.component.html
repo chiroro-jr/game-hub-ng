@@ -1,0 +1,15 @@
+<p *ngIf="errorMessage; else games">
+    {{ errorMessage }}
+</p>
+
+<ng-template #games>
+    <ul *ngIf="games$ | async as games; else loading">
+        <li *ngFor="let game of games; trackBy: trackByGames">
+            {{ game.name }}
+        </li>
+    </ul>
+</ng-template>
+
+<ng-template #loading>
+    <p>Loading games</p>
+</ng-template>
