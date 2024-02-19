@@ -1,1 +1,42 @@
-<router-outlet />
+<div class="main-layout">
+    <div class="nav"></div>
+    <div class="aside"></div>
+    <div class="main"></div>
+</div>
+
+<style>
+    .main-layout {
+        display: grid;
+        grid-template-areas: 'nav' 'main';
+    }
+
+    div {
+        height: 40px;
+    }
+
+    .nav {
+        grid-area: nav;
+        background: coral;
+    }
+
+    .main {
+        grid-area: main;
+        background-color: cyan;
+    }
+
+    .aside {
+        display: none;
+        grid-area: aside;
+        background-color: blueviolet;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .main-layout {
+            grid-template-areas: 'nav nav' 'aside main';
+        }
+
+        .aside {
+            display: block;
+        }
+    }
+</style>
