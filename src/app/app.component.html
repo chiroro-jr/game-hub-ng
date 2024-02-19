@@ -1,7 +1,9 @@
 <div class="main-layout">
-    <div class="nav"></div>
-    <div class="aside"></div>
-    <div class="main"></div>
+    <div class="nav">
+        <nav-bar />
+    </div>
+    <div class="aside">Aside</div>
+    <div class="main">Main</div>
 </div>
 
 <style>
@@ -10,13 +12,8 @@
         grid-template-areas: 'nav' 'main';
     }
 
-    div {
-        height: 40px;
-    }
-
     .nav {
         grid-area: nav;
-        background: coral;
     }
 
     .main {
