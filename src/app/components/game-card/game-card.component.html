@@ -8,6 +8,9 @@
         >
             {{ game.name }}
         </h1>
-        <platform-icons-list [platforms]="game.parent_platforms" />
+        <div class="flex justify-between items-center">
+            <platform-icons-list [platforms]="game.parent_platforms" />
+            <critic-score [score]="game.metacritic" />
+        </div>
     </div>
 </div>
