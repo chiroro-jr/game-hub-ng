@@ -2,11 +2,12 @@ import { AsyncPipe, NgFor } from '@angular/common'
 import { Component, OnInit, inject } from '@angular/core'
 import { Genre, GenresService } from '../../services/genres.service'
 import { EMPTY, Observable, catchError } from 'rxjs'
+import { CropImagePipe } from '../../pipes/crop-image.pipe'
 
 @Component({
     selector: 'genre-list',
     standalone: true,
-    imports: [NgFor, AsyncPipe],
+    imports: [NgFor, AsyncPipe, CropImagePipe],
     providers: [GenresService],
     templateUrl: 'genre-list.component.html',
 })
