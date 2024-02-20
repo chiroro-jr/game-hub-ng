@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let genre of genres$ | async; trackBy: trackByGenreId">
+        {{ genre.name }}
+    </li>
+</ul>
