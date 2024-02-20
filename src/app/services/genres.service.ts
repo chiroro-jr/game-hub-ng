@@ -5,6 +5,7 @@ import { Observable, catchError, map, retry, throwError } from 'rxjs'
 export interface Genre {
     id: number
     name: string
+    image_background: string
 }
 
 interface FetchGenresResponse {
