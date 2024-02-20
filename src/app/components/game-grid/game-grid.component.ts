@@ -4,6 +4,7 @@ import { EMPTY, Observable, catchError } from 'rxjs'
 import { AsyncPipe, CommonModule } from '@angular/common'
 import { GameCardComponent } from '../game-card/game-card.component'
 import { GameCardSkeletonComponent } from '../game-card-skeleton/game-card-skeleton.component'
+import { GameCardContainerComponent } from '../game-card-container.component'
 
 @Component({
     selector: 'game-grid',
@@ -13,6 +14,7 @@ import { GameCardSkeletonComponent } from '../game-card-skeleton/game-card-skele
         CommonModule,
         GameCardComponent,
         GameCardSkeletonComponent,
+        GameCardContainerComponent,
     ],
     providers: [GamesService],
     templateUrl: './game-grid.component.html',
