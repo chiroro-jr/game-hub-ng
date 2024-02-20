@@ -4,18 +4,19 @@
 
 <ng-template #games>
     <div class="game-grid" *ngIf="games$ | async as games; else loading">
-        <game-card
-            *ngFor="let game of games; trackBy: trackByGames"
-            [game]="game"
-        />
+        <game-card-container *ngFor="let game of games; trackBy: trackByGames">
+            <game-card [game]="game" />
+        </game-card-container>
     </div>
 </ng-template>
 
 <ng-template #loading>
     <div class="game-grid">
-        <game-card-skeleton
+        <game-card-container
             *ngFor="let skeleton of [1, 2, 3, 4, 5, 6]; trackBy: trackByIndex"
-        />
+        >
+            <game-card-skeleton />
+        </game-card-container>
     </div>
 </ng-template>
 
