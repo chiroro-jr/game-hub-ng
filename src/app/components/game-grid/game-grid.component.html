@@ -12,7 +12,11 @@
 </ng-template>
 
 <ng-template #loading>
-    <p>Loading games</p>
+    <div class="game-grid">
+        <game-card-skeleton
+            *ngFor="let skeleton of [1, 2, 3, 4, 5, 6]; trackBy: trackByIndex"
+        />
+    </div>
 </ng-template>
 
 <style>
