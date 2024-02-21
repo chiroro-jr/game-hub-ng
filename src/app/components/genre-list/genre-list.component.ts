@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, NgFor } from '@angular/common'
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core'
 import { Genre, GenresService } from '../../services/genres.service'
 import { EMPTY, Observable, catchError } from 'rxjs'
 import { CropImagePipe } from '../../pipes/crop-image.pipe'
@@ -15,6 +15,12 @@ export class GenreListComponent implements OnInit {
     genres$!: Observable<Genre[]>
     genresService = inject(GenresService)
     errorMessage = ''
+
+    @Output() selectGenre = new EventEmitter()
+
+    onSelectGenre(genre: Genre) {
+        this.selectGenre.emit(genre)
+    }
 
     ngOnInit() {
         this.genres$ = this.genresService.getGenres().pipe(
