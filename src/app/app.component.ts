@@ -6,6 +6,7 @@ import { GameGridComponent } from './components/game-grid/game-grid.component'
 import { GenreListComponent } from './components/genre-list/genre-list.component'
 import { Genre } from './services/genres.service'
 import { PlatformSelectorComponent } from './components/platform-selector/platform-selector.component'
+import { Platform } from './services/platforms.service'
 
 @Component({
     selector: 'app-root',
@@ -21,10 +22,15 @@ import { PlatformSelectorComponent } from './components/platform-selector/platfo
 })
 export class AppComponent implements OnInit {
     selectedGenre: Genre | null = null
+    selectedPlatform: Platform | null = null
     title = 'game-hub-ng'
 
     handleSelectedGenre(genre: Genre) {
         this.selectedGenre = genre
+    }
+
+    handleSelectPlatform(platform: Platform) {
+        this.selectedPlatform = platform
     }
 
     ngOnInit() {

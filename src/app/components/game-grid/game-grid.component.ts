@@ -8,19 +8,19 @@ import {
 } from '@angular/core'
 import { Game, GamesService } from '../../services/games.service'
 import {
-    BehaviorSubject,
     EMPTY,
     Observable,
     ReplaySubject,
     catchError,
+    combineLatest,
     switchMap,
-    tap,
 } from 'rxjs'
 import { AsyncPipe, CommonModule } from '@angular/common'
 import { GameCardComponent } from '../game-card/game-card.component'
 import { GameCardSkeletonComponent } from '../game-card-skeleton/game-card-skeleton.component'
 import { GameCardContainerComponent } from '../game-card-container.component'
 import { Genre } from '../../services/genres.service'
+import { Platform } from '../../services/platforms.service'
 
 @Component({
     selector: 'game-grid',
@@ -44,17 +44,28 @@ export class GameGridComponent implements OnInit {
         this.selectedGenre$.next(value)
     }
 
+    readonly selectedPlatform$ = new ReplaySubject<Platform | null>()
+    @Input() set selectedPlatform(value: Platform | null) {
+        console.log(value)
+        this.selectedPlatform$.next(value)
+    }
+
     errorMessage = ''
 
     ngOnInit(): void {
-        this.games$ = this.selectedGenre$.pipe(
-            switchMap((selectedGenre) =>
-                this.gamesService.getGames(selectedGenre).pipe(
-                    catchError((error) => {
-                        this.errorMessage = error
-                        return EMPTY
-                    })
-                )
+        this.games$ = combineLatest([
+            this.selectedGenre$,
+            this.selectedPlatform$,
+        ]).pipe(
+            switchMap(([selectedGenre, selectedPlatform]) =>
+                this.gamesService
+                    .getGames(selectedGenre, selectedPlatform)
+                    .pipe(
+                        catchError((error) => {
+                            this.errorMessage = error
+                            return EMPTY
+                        })
+                    )
             )
         )
     }

@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit, inject } from '@angular/core'
+import {
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+    inject,
+} from '@angular/core'
 import { Platform, PlatformsService } from '../../services/platforms.service'
 import { EMPTY, Observable, catchError } from 'rxjs'
 
@@ -14,6 +21,14 @@ export class PlatformSelectorComponent implements OnInit {
     platformsService = inject(PlatformsService)
     platforms$!: Observable<Platform[]>
     errorMessage = ''
+
+    @Output() selectPlatform = new EventEmitter()
+
+    @Input() selectedPlaform!: Platform | null
+
+    onSelectPlatform(platform: Platform) {
+        this.selectPlatform.emit(platform)
+    }
 
     ngOnInit(): void {
         this.platforms$ = this.platformsService.getPlatforms().pipe(

@@ -9,8 +9,11 @@
         />
     </div>
     <div class="main">
-        <platform-selector />
-        <game-grid [selectedGenre]="selectedGenre" />
+        <platform-selector (selectPlatform)="handleSelectPlatform($event)" />
+        <game-grid
+            [selectedGenre]="selectedGenre"
+            [selectedPlatform]="selectedPlatform"
+        />
     </div>
 </div>
 

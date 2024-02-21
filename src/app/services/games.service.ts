@@ -31,11 +31,18 @@ export class GamesService {
     apiKey = 'fc992f5179d14507bfc1bddc17a9c03c'
     baseParams = new HttpParams().set('key', this.apiKey)
 
-    getGames(selectedGenre: Genre | null) {
+    getGames(selectedGenre: Genre | null, selectedPlatform: Platform | null) {
         let params = this.baseParams
 
         if (selectedGenre) {
             params = params.append('genres', selectedGenre.id.toString())
+        }
+
+        if (selectedPlatform) {
+            params = params.append(
+                'parent_platforms',
+                selectedPlatform.id.toString()
+            )
         }
 
         return this.httpClient
