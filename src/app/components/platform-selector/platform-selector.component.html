@@ -1,0 +1,25 @@
+<ng-template *ngIf="errorMessage; else platformSelector">
+    <p>{{ errorMessage }}</p></ng-template
+>
+
+<ng-template #platformSelector>
+    <form
+        *ngIf="platforms$ | async as platforms; else loading"
+        class="max-w-xs flex items-start"
+    >
+        <select
+            id="large"
+            class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+            <option value="" disabled hidden selected>Platform</option>
+            <option
+                *ngFor="let platform of platforms; trackBy: trackByPlatformId"
+                [value]="platform"
+            >
+                {{ platform.name }}
+            </option>
+        </select>
+    </form>
+</ng-template>
+
+<ng-template #loading></ng-template>

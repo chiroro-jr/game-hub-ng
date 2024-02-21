@@ -5,6 +5,7 @@ import { NavBarComponent } from './components/nav-bar.component'
 import { GameGridComponent } from './components/game-grid/game-grid.component'
 import { GenreListComponent } from './components/genre-list/genre-list.component'
 import { Genre } from './services/genres.service'
+import { PlatformSelectorComponent } from './components/platform-selector/platform-selector.component'
 
 @Component({
     selector: 'app-root',
@@ -14,6 +15,7 @@ import { Genre } from './services/genres.service'
         NavBarComponent,
         GameGridComponent,
         GenreListComponent,
+        PlatformSelectorComponent,
     ],
     templateUrl: './app.component.html',
 })
