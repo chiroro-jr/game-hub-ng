@@ -11,6 +11,7 @@ import {
     BehaviorSubject,
     EMPTY,
     Observable,
+    ReplaySubject,
     catchError,
     switchMap,
     tap,
@@ -34,28 +35,28 @@ import { Genre } from '../../services/genres.service'
     providers: [GamesService],
     templateUrl: './game-grid.component.html',
 })
-export class GameGridComponent implements OnInit, OnChanges {
+export class GameGridComponent implements OnInit {
     gamesService = inject(GamesService)
-    @Input({ required: true }) selectedGenre: Genre | null = null
-    selectedGenreSubject = new BehaviorSubject<Genre | null>(null)
-    games$ = this.selectedGenreSubject.pipe(
-        switchMap((selectedGenre) => {
-            return this.gamesService.getGames(selectedGenre).pipe(
-                catchError((error) => {
-                    this.errorMessage = error
-                    return EMPTY
-                })
-            )
-        })
-    )
-    errorMessage = ''
+    public games$!: Observable<Game[]>
 
-    ngOnChanges(changes: SimpleChanges): void {
-        this.selectedGenreSubject.next(changes['selectedGenre'].currentValue)
+    readonly selectedGenre$ = new ReplaySubject<Genre | null>()
+    @Input() set selectedGenre(value: Genre | null) {
+        this.selectedGenre$.next(value)
     }
 
+    errorMessage = ''
+
     ngOnInit(): void {
-        this.selectedGenreSubject.next(this.selectedGenre)
+        this.games$ = this.selectedGenre$.pipe(
+            switchMap((selectedGenre) =>
+                this.gamesService.getGames(selectedGenre).pipe(
+                    catchError((error) => {
+                        this.errorMessage = error
+                        return EMPTY
+                    })
+                )
+            )
+        )
     }
 
     trackByGames(index: number, game: Game) {
