@@ -5,12 +5,15 @@
         <li
             class="flex gap-2"
             *ngFor="let genre of genres; trackBy: trackByGenreId"
+            (click)="onSelectGenre(genre)"
         >
-            <img
-                class="w-8 h-8 rounded-md"
-                [src]="genre.image_background | crop"
-            />
-            <span class="text-lg">{{ genre.name }}</span>
+            <a class="flex gap-2 hover:cursor-pointer hover:underline">
+                <img
+                    class="w-8 h-8 rounded-md"
+                    [src]="genre.image_background | crop"
+                />
+                <span class="text-lg">{{ genre.name }}</span>
+            </a>
         </li>
     </ul>
 </ng-template>

@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable, inject } from '@angular/core'
 import { Observable, catchError, map, retry, throwError } from 'rxjs'
+import { Genre } from './genres.service'
 
 export interface Platform {
     id: number
@@ -30,10 +31,16 @@ export class GamesService {
     apiKey = 'fc992f5179d14507bfc1bddc17a9c03c'
     baseParams = new HttpParams().set('key', this.apiKey)
 
-    getGames() {
+    getGames(selectedGenre: Genre | null) {
+        let params = this.baseParams
+
+        if (selectedGenre) {
+            params = params.append('genres', selectedGenre.id.toString())
+        }
+
         return this.httpClient
             .get<FetchGamesResponse>(this.baseUrl, {
-                params: this.baseParams,
+                params,
             })
             .pipe(
                 map((res) => res.results),

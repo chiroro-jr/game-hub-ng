@@ -3,10 +3,10 @@
         <nav-bar />
     </div>
     <div class="aside">
-        <genre-list />
+        <genre-list (selectGenre)="handleSelectedGenre($event)" />
     </div>
     <div class="main">
-        <game-grid />
+        <game-grid [selectedGenre]="selectedGenre" />
     </div>
 </div>
 
