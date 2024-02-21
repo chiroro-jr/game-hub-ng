@@ -1,26 +1,11 @@
-import {
-    Component,
-    Input,
-    OnChanges,
-    OnInit,
-    SimpleChanges,
-    inject,
-} from '@angular/core'
+import { Component, Input, OnInit, inject } from '@angular/core'
 import { Game, GamesService } from '../../services/games.service'
-import {
-    EMPTY,
-    Observable,
-    ReplaySubject,
-    catchError,
-    combineLatest,
-    switchMap,
-} from 'rxjs'
+import { EMPTY, Observable, ReplaySubject, catchError, switchMap } from 'rxjs'
 import { AsyncPipe, CommonModule } from '@angular/common'
 import { GameCardComponent } from '../game-card/game-card.component'
 import { GameCardSkeletonComponent } from '../game-card-skeleton/game-card-skeleton.component'
 import { GameCardContainerComponent } from '../game-card-container.component'
-import { Genre } from '../../services/genres.service'
-import { Platform } from '../../services/platforms.service'
+import { GameQuery } from '../../app.component'
 
 @Component({
     selector: 'game-grid',
@@ -39,33 +24,22 @@ export class GameGridComponent implements OnInit {
     gamesService = inject(GamesService)
     public games$!: Observable<Game[]>
 
-    readonly selectedGenre$ = new ReplaySubject<Genre | null>()
-    @Input() set selectedGenre(value: Genre | null) {
-        this.selectedGenre$.next(value)
-    }
-
-    readonly selectedPlatform$ = new ReplaySubject<Platform | null>()
-    @Input() set selectedPlatform(value: Platform | null) {
-        console.log(value)
-        this.selectedPlatform$.next(value)
+    readonly gameQuery$ = new ReplaySubject<GameQuery>()
+    @Input() set gameQuery(value: GameQuery) {
+        this.gameQuery$.next(value)
     }
 
     errorMessage = ''
 
     ngOnInit(): void {
-        this.games$ = combineLatest([
-            this.selectedGenre$,
-            this.selectedPlatform$,
-        ]).pipe(
-            switchMap(([selectedGenre, selectedPlatform]) =>
-                this.gamesService
-                    .getGames(selectedGenre, selectedPlatform)
-                    .pipe(
-                        catchError((error) => {
-                            this.errorMessage = error
-                            return EMPTY
-                        })
-                    )
+        this.games$ = this.gameQuery$.pipe(
+            switchMap((gameQuery) =>
+                this.gamesService.getGames(gameQuery).pipe(
+                    catchError((error) => {
+                        this.errorMessage = error
+                        return EMPTY
+                    })
+                )
             )
         )
     }

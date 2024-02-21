@@ -5,15 +5,12 @@
     <div class="aside">
         <genre-list
             (selectGenre)="handleSelectedGenre($event)"
-            [selectedGenre]="selectedGenre"
+            [selectedGenre]="gameQuery.genre"
         />
     </div>
     <div class="main">
         <platform-selector (selectPlatform)="handleSelectPlatform($event)" />
-        <game-grid
-            [selectedGenre]="selectedGenre"
-            [selectedPlatform]="selectedPlatform"
-        />
+        <game-grid [gameQuery]="gameQuery" />
     </div>
 </div>
 
