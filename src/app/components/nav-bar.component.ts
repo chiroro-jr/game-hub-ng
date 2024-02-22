@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core'
 import { ColorModeSwitchComponent } from './color-mode-switch/color-mode-switch.component'
+import { SearchInputComponent } from './search-input/search-input.component'
 
 @Component({
     selector: 'nav-bar',
     standalone: true,
-    imports: [ColorModeSwitchComponent],
     template: `
-        <nav>
+        <nav class="flex items-center px-2.5 pt-3 pb-6 gap-3">
             <img src="assets/images/logo.webp" alt="game hub logo" />
+            <div class="flex-1">
+                <search-input />
+            </div>
             <color-mode-switch />
         </nav>
     `,
     styles: `
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-        }
 
         nav img {
             width: 60px
         }
     `,
+    imports: [ColorModeSwitchComponent, SearchInputComponent],
 })
 export class NavBarComponent {}
