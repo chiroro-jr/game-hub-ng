@@ -7,6 +7,7 @@ import { Genre } from './services/genres.service'
 import { PlatformSelectorComponent } from './components/platform-selector/platform-selector.component'
 import { Platform } from './services/platforms.service'
 import { SortSelectorComponent } from './components/sort-selector/sort-selector.component'
+import { GameHeadingComponent } from './components/game-heading.component'
 
 export interface GameQuery {
     genre: Genre | null
@@ -18,14 +19,15 @@ export interface GameQuery {
 @Component({
     selector: 'app-root',
     standalone: true,
+    templateUrl: './app.component.html',
     imports: [
         NavBarComponent,
         GameGridComponent,
         GenreListComponent,
         PlatformSelectorComponent,
         SortSelectorComponent,
+        GameHeadingComponent,
     ],
-    templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
     gameQuery = {} as GameQuery

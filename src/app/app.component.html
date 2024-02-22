@@ -9,16 +9,19 @@
         />
     </div>
     <div class="main">
-        <div class="flex gap-6 px-2 mb-4">
-            <platform-selector
-                (selectPlatform)="handleSelectPlatform($event)"
-            />
-            <sort-selector
-                (selectSortOrder)="handleSelectSortOrder($event)"
-                [selectedSortOrder]="gameQuery.sortOrder"
-            />
+        <div class="px-2.5">
+            <game-heading [gameQuery]="gameQuery" />
+            <div class="flex gap-6 mb-5">
+                <platform-selector
+                    (selectPlatform)="handleSelectPlatform($event)"
+                />
+                <sort-selector
+                    (selectSortOrder)="handleSelectSortOrder($event)"
+                    [selectedSortOrder]="gameQuery.sortOrder"
+                />
+            </div>
+            <game-grid [gameQuery]="gameQuery" />
         </div>
-        <game-grid [gameQuery]="gameQuery" />
     </div>
 </div>
 
