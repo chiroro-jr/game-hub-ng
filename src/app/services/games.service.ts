@@ -49,6 +49,10 @@ export class GamesService {
             params = params.append('ordering', gameQuery.sortOrder)
         }
 
+        if (gameQuery.searchText) {
+            params = params.append('search', gameQuery.searchText)
+        }
+
         return this.httpClient
             .get<FetchGamesResponse>(this.baseUrl, {
                 params,

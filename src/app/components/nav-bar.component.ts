@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { ColorModeSwitchComponent } from './color-mode-switch/color-mode-switch.component'
 import { SearchInputComponent } from './search-input/search-input.component'
 
@@ -9,7 +9,7 @@ import { SearchInputComponent } from './search-input/search-input.component'
         <nav class="flex items-center px-2.5 pt-3 pb-6 gap-3">
             <img src="assets/images/logo.webp" alt="game hub logo" />
             <div class="flex-1">
-                <search-input />
+                <search-input (search)="handleSearch($event)" />
             </div>
             <color-mode-switch />
         </nav>
@@ -22,4 +22,10 @@ import { SearchInputComponent } from './search-input/search-input.component'
     `,
     imports: [ColorModeSwitchComponent, SearchInputComponent],
 })
-export class NavBarComponent {}
+export class NavBarComponent {
+    @Output() search = new EventEmitter()
+
+    handleSearch(searchText: string) {
+        this.search.emit(searchText)
+    }
+}

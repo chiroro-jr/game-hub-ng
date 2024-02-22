@@ -1,6 +1,6 @@
 <div class="main-layout">
     <div class="nav">
-        <nav-bar />
+        <nav-bar (search)="handleSearch($event)" />
     </div>
     <div class="aside">
         <genre-list

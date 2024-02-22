@@ -12,6 +12,7 @@ export interface GameQuery {
     genre: Genre | null
     platform: Platform | null
     sortOrder: string | null
+    searchText: string | null
 }
 
 @Component({
@@ -39,6 +40,10 @@ export class AppComponent implements OnInit {
 
     handleSelectSortOrder(sortOrder: string) {
         this.gameQuery = { ...this.gameQuery, sortOrder }
+    }
+
+    handleSearch(searchText: string) {
+        this.gameQuery = { ...this.gameQuery, searchText }
     }
 
     ngOnInit() {
