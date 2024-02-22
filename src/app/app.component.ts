@@ -11,6 +11,7 @@ import { SortSelectorComponent } from './components/sort-selector/sort-selector.
 export interface GameQuery {
     genre: Genre | null
     platform: Platform | null
+    sortOrder: string | null
 }
 
 @Component({
@@ -29,11 +30,15 @@ export class AppComponent implements OnInit {
     gameQuery = {} as GameQuery
 
     handleSelectedGenre(genre: Genre) {
-        this.gameQuery = { ...this.gameQuery, genre: genre }
+        this.gameQuery = { ...this.gameQuery, genre }
     }
 
     handleSelectPlatform(platform: Platform) {
-        this.gameQuery = { ...this.gameQuery, platform: platform }
+        this.gameQuery = { ...this.gameQuery, platform }
+    }
+
+    handleSelectSortOrder(sortOrder: string) {
+        this.gameQuery = { ...this.gameQuery, sortOrder }
     }
 
     ngOnInit() {

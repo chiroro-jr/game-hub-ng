@@ -13,7 +13,10 @@
             <platform-selector
                 (selectPlatform)="handleSelectPlatform($event)"
             />
-            <sort-selector />
+            <sort-selector
+                (selectSortOrder)="handleSelectSortOrder($event)"
+                [selectedSortOrder]="gameQuery.sortOrder"
+            />
         </div>
         <game-grid [gameQuery]="gameQuery" />
     </div>
