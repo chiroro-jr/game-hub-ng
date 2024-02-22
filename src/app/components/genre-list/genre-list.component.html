@@ -1,22 +1,22 @@
 <p *ngIf="errorMessage; else genreList"></p>
 
 <ng-template #genreList>
+    <h1 class="font-bold text-2xl mb-3 opacity-90">Genres</h1>
     <ul *ngIf="genres$ | async as genres; else loading" class="space-y-2">
         <li
-            class="flex gap-2"
             *ngFor="let genre of genres; trackBy: trackByGenreId"
             (click)="onSelectGenre(genre)"
         >
             <a
                 href="#"
                 [ngClass]="selectedGenreClasses(genre.id)"
-                class="flex gap-2 hover:cursor-pointer hover:underline"
+                class="flex items-center gap-2 hover:cursor-pointer hover:underline"
             >
                 <img
-                    class="w-8 h-8 rounded-md"
+                    class="w-8 h-8 rounded-md object-cover"
                     [src]="genre.image_background | crop"
                 />
-                <span class="text-lg">{{ genre.name }}</span>
+                <span class="text-lg text-left">{{ genre.name }}</span>
             </a>
         </li>
     </ul>
