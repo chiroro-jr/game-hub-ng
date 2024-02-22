@@ -6,6 +6,7 @@ import { GenreListComponent } from './components/genre-list/genre-list.component
 import { Genre } from './services/genres.service'
 import { PlatformSelectorComponent } from './components/platform-selector/platform-selector.component'
 import { Platform } from './services/platforms.service'
+import { SortSelectorComponent } from './components/sort-selector/sort-selector.component'
 
 export interface GameQuery {
     genre: Genre | null
@@ -20,6 +21,7 @@ export interface GameQuery {
         GameGridComponent,
         GenreListComponent,
         PlatformSelectorComponent,
+        SortSelectorComponent,
     ],
     templateUrl: './app.component.html',
 })

@@ -9,7 +9,12 @@
         />
     </div>
     <div class="main">
-        <platform-selector (selectPlatform)="handleSelectPlatform($event)" />
+        <div class="flex gap-6 px-2 mb-4">
+            <platform-selector
+                (selectPlatform)="handleSelectPlatform($event)"
+            />
+            <sort-selector />
+        </div>
         <game-grid [gameQuery]="gameQuery" />
     </div>
 </div>
