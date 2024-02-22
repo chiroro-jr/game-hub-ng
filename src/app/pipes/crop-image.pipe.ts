@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core'
 export class CropImagePipe implements PipeTransform {
     transform(value: string, ...args: any[]): string {
         if (!value) {
-            return ''
+            return 'assets/images/no-image-placeholder.webp'
         }
 
         const target = 'media/'
